@@ -19,6 +19,7 @@ fetch(sheetUrl)
     getLocations(petList); //
   });
 
+// Appends the list of pets to the DOM
 function appendPets(pets) {
   let htmlTemplate = "";
 
@@ -37,6 +38,7 @@ function appendPets(pets) {
   document.querySelector("#pet-container").innerHTML = htmlTemplate;
 }
 
+// Gets the different species from the list of pets and puts them in an array; no duplicates
 function getSpecies(pets) {
   let speciesArray = [];
 
@@ -47,16 +49,21 @@ function getSpecies(pets) {
   }
 
   console.log(speciesArray);
+
+  return speciesArray;
 }
 
+// Gets the available locations from the list and puts them in an array; no duplicates
 function getLocations(pets) {
-  let speciesArray = [];
+  let locationArray = [];
 
   for (let pet of pets) {
-    if (speciesArray.includes(pet["gsx$location"]["$t"].toLowerCase()) === false) {
-      speciesArray.push(pet["gsx$location"]["$t"].toLowerCase())
+    if (locationArray.includes(pet["gsx$location"]["$t"].toLowerCase()) === false) {
+      locationArray.push(pet["gsx$location"]["$t"].toLowerCase())
     }
   }
 
-  console.log(speciesArray);
+  console.log(locationArray);
+
+  return locationArray;
 }
