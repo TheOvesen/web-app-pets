@@ -15,9 +15,18 @@ fetch(sheetUrl)
     petList = json.feed.entry;
     console.log(petList);
     appendPets(petList);
-    getSpecies(petList);   // Don't need these here specifically, it's just to test them
-    getLocations(petList); //
+    fillSearchForm(petList);
   });
+
+function fillSearchForm(list)
+{
+  fillDropdown("type");
+  fillDropdown("age");
+  fillDropdown("breed");
+  fillDropdown("location");
+  fillDropdown("size");
+  fillDropdown("gender");
+}
 
 // Appends the list of pets to the DOM
 function appendPets(pets) {
@@ -40,30 +49,100 @@ function appendPets(pets) {
 
 // Gets the different species from the list of pets and puts them in an array; no duplicates
 function getSpecies(pets) {
+  let htmlTemplate = "";
   let speciesArray = [];
 
   for (let pet of pets) {
     if (speciesArray.includes(pet["gsx$type"]["$t"].toLowerCase()) === false) {
       speciesArray.push(pet["gsx$type"]["$t"].toLowerCase())
+      htmlTemplate += `
+        <option value="${pet["gsx$type"]["$t"].toLowerCase()}">${pet["gsx$type"]["$t"]}</option>
+      `;
     }
   }
 
-  console.log(speciesArray);
-
-  return speciesArray;
+  document.querySelector("#input_species").innerHTML += htmlTemplate;
 }
 
 // Gets the available locations from the list and puts them in an array; no duplicates
 function getLocations(pets) {
+  let htmlTemplate = "";
   let locationArray = [];
 
   for (let pet of pets) {
     if (locationArray.includes(pet["gsx$location"]["$t"].toLowerCase()) === false) {
       locationArray.push(pet["gsx$location"]["$t"].toLowerCase())
+      htmlTemplate += `
+        <option value="${pet["gsx$location"]["$t"].toLowerCase()}">${pet["gsx$location"]["$t"]}</option>
+      `;
     }
   }
 
-  console.log(locationArray);
+  document.querySelector("#input_location").innerHTML += htmlTemplate;
+}
 
-  return locationArray;
+function fillDropdown(category)
+{
+  let htmlTemplate = `<option value="">---</option>`;
+  let containerArray = [];
+
+  for (let pet of petList) {
+    if (containerArray.includes(pet[`gsx$${category}`]["$t"].toLowerCase()) === false) {
+      containerArray.push(pet[`gsx$${category}`]["$t"].toLowerCase())
+      htmlTemplate += `
+        <option value="${pet[`gsx$${category}`]["$t"].toLowerCase()}">${pet[`gsx$${category}`]["$t"]}</option>
+      `;
+    }
+  }
+
+  document.querySelector(`#input_${category}`).innerHTML += htmlTemplate;
+}
+
+function searchList()
+{
+  let propertyArray = [
+    "gsx$type",
+    "gsx$age",
+    "gsx$breed",
+    "gsx$location",
+    "gsx$gender",
+    "gsx$size"
+  ];
+
+  let searchPromptArray = [
+    document.querySelector("#input_type").value,
+    document.querySelector("#input_age").value,
+    document.querySelector("#input_breed").value,
+    document.querySelector("#input_location").value,
+    document.querySelector("#input_gender").value,
+    document.querySelector("#input_size").value
+  ];
+
+  appendPets(searchListSpecificMulti(petList, propertyArray, searchPromptArray));
+}
+
+function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
+  if (propertyArray.length != searchPromptArray.length) {
+    console.log("Error: Arrays aren't equally long, fill out with blank strings if you have to");
+    return [];
+  }
+  let filteredList = [];
+
+  for (let object of list) {
+    let matches = 0;
+
+    for (let i = 0; i < propertyArray.length; i++) {
+      if (object[`${propertyArray[i]}`]["$t"].toLowerCase().includes(searchPromptArray[i].trim().toLowerCase())) {
+        matches++;
+      }
+    }
+
+    if (matches === propertyArray.length) {
+      filteredList.push(object);
+    }
+  }
+
+  //console.log(`Objects where "${propertyArray}" respectively match "${searchPromptArray}":`);
+  console.log(filteredList);
+  return filteredList;
 }
