@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
   <section id="nav-bar">
 <nav class="nav-extended">
      <div class="nav-wrapper">
@@ -48,7 +49,92 @@
   <section id="pet-container">
 
   </section>
-  
+
+   <!-- / form section-->
+  <section class="container-form">
+<p  class="text-center">Personal information</p>
+    <form action="/action_page.php">
+      <div class="form-group ">
+        <label for="inputTitle4">Title</label>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">Mr.</label>
+</div>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">Ms.</label>
+</div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputEmail4">First name</label>
+    <input type="firstName" class="form-control" id="inputFirstName4" placeholder="First name" >
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputPassword4">Last name</label>
+    <input type="LastName" class="form-control" id="inputLastName4" placeholder="Last name">
+  </div>
+</div>
+<p  class="text-center">Personal information</p>
+
+<div class="form-group ">
+  <label for="inputphone4">Phone number</label>
+  <input type="text" class="input-medium bfh-phone form-control" data-format="+1 (ddd) ddd-dddd" placeholder="+1 (ddd) ddd-dddd">
+
+  <div class="form-group">
+    <label for="inputEmail4">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Street,house,apartament">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity" placeholder="City">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Country</label>
+
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>Denmark</option>
+        <option>Germany</option>
+        <option>Bulgaria</option>
+        <option>Lithuania</option>
+        <option>Sweden</option>
+        <option>Norway</option>
+
+
+      </select>
+      </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip" placeholder="Zip code">
+    </div>
+  </div>
+    <div class="well">
+          <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" class="form-control"  placeholder="Date of Birth">
+        </div>
+    </div>
+
+  <form>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Profile picture</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+</form>
+  <button type="submit" class="btn btn-primary">Apply</button>
+</form>
+</section>
+<!-- end of form -->
+
 <section id = "team" class="team-info">
   <div class="container">
   <h2>Our Team</h2>
