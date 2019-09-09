@@ -2,3 +2,25 @@
 {
   margin: 0;
 }
+
+.navbar-fixed, .nav-extended{
+background-color: #9a3e42;
+}
+
+.team-info h2, h3, p{
+  margin: 8%;
+  text-align: center;
+}
+.badges img{
+  border-radius: 50%;
+  width: 25%;
+  margin-left: 5%;
+}
+
+.team-info h2{
+  font-size:35px;
+}
+
+.team-info h3{
+  font-size: 27px;
+}

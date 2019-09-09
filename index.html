@@ -5,11 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/main.css">
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="css/main.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <title>Take Me Home</title>
 </head>
 
 <body>
+  <section id="nav-bar">
+<nav class="nav-extended">
+     <div class="nav-wrapper">
+       <a href="#" class="brand-logo">Logo</a>
+     </div>
+</nav>
+    </section>
+
+  <section id="animal-container">
 
   <form class="searchForm" id="searchForm">
     <label for="input_type">Type</label>
@@ -35,6 +48,34 @@
   <section id="pet-container">
 
   </section>
+  
+<section id = "team" class="team-info">
+  <div class="container">
+  <h2>Our Team</h2>
+  <div class="badges">
+  <img src="img/soren.jpg" alt="Soren badge">
+  <img src="img/klaudia.jpg" alt="Klaudia badge">
+  <img src="img/monika.jpg" alt="Monika badge">
+  </div>
+  <div id = "team-info-text">
+  <h3>Our Goal</h3>
+<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</section>
+
+<footer>
+  <nav class="nav-fixed">
+     <div class="nav-content">
+       <ul class="tabs tabs-transparent">
+         <li class="tab"><a href="#home">Home</a></li>
+         <li class="tab"><a href="#view-all">View all</a></li>
+         <li class="tab"><a href="#volunteer">Volunteer</a></li>
+         <li class="tab"><a href="#about">About us</a></li>
+       </ul>
+     </div>
+     </nav>
+</footer>
 
   <script src="js/main.js" charset="utf-8"></script>
 </body>
