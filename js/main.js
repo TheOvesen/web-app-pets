@@ -7,8 +7,10 @@ let petList = [];
 // console.log(sheetUrl);
 
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems);
+  let elems = document.querySelectorAll('.sidenav');
+  let instances = M.Sidenav.init(elems);
+  let tabs = document.querySelectorAll('.tabs');
+  let instance = M.Tabs.init(tabs);
 });
 
 // Get the list of pets from our Google Sheet
@@ -58,10 +60,10 @@ function fillDropdown(category)
   let containerArray = [];
 
   for (let pet of petList) {
-    if (containerArray.includes(pet[`gsx$${category}`]["$t"].toLowerCase()) === false) {
-      containerArray.push(pet[`gsx$${category}`]["$t"].toLowerCase())
+    if (containerArray.includes(pet[`gsx$${category}`]["$t"]) === false) {
+      containerArray.push(pet[`gsx$${category}`]["$t"])
       htmlTemplate += `
-        <option value="${pet[`gsx$${category}`]["$t"].toLowerCase()}">${pet[`gsx$${category}`]["$t"]}</option>
+        <option value="${pet[`gsx$${category}`]["$t"]}">${pet[`gsx$${category}`]["$t"]}</option>
       `;
     }
   }
@@ -94,6 +96,8 @@ function searchList()
   ];
 
   appendPets(searchListSpecificMulti(petList, propertyArray, searchPromptArray));
+
+  document.querySelector("#view_all_button").click();
 }
 
 function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
@@ -107,7 +111,7 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
     let matches = 0;
 
     for (let i = 0; i < propertyArray.length; i++) {
-      if (object[`${propertyArray[i]}`]["$t"].toLowerCase().includes(searchPromptArray[i].trim().toLowerCase())) {
+      if (object[`${propertyArray[i]}`]["$t"].includes(searchPromptArray[i].trim())) {
         matches++;
       }
     }
