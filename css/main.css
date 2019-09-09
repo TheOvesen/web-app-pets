@@ -3,7 +3,7 @@
   margin: 0;
 }
 
-.navbar-fixed, .nav-extended{
+.nav-fixed, .nav-extended{
 background-color: #9a3e42;
 }
 
@@ -23,4 +23,24 @@ background-color: #9a3e42;
 
 .team-info h3{
   font-size: 27px;
+}
+
+img
+{
+  width: 100%;
+}
+
+#pet-container
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+#pet-container article
+{
+  display: inline-block;
+  width: 40%;
 }

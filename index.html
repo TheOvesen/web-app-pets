@@ -15,68 +15,89 @@
 
 <body>
   <section id="nav-bar">
-<nav class="nav-extended">
-     <div class="nav-wrapper">
-       <a href="#" class="brand-logo">Logo</a>
-     </div>
-</nav>
-    </section>
-
-  <section id="animal-container">
-
-  <form class="searchForm" id="searchForm">
-    <label for="input_type">Type</label>
-    <select id="input_type"></select>
-
-    <label for="input_breed">Breed</label>
-    <select id="input_breed"></select>
-
-    <label for="input_gender">Gender</label>
-    <select id="input_gender"></select>
-
-    <label for="input_age">Age</label>
-    <select id="input_age"></select>
-
-    <label for="input_size">Size</label>
-    <select id="input_size"></select>
-
-    <label for="input_location">Location</label>
-    <select id="input_location"></select>
-    <button type="button" name="button" onclick="searchList()">Search</button>
-  </form>
-
-  <section id="pet-container">
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+      </div>
+    </nav>
 
   </section>
-  
-<section id = "team" class="team-info">
-  <div class="container">
-  <h2>Our Team</h2>
-  <div class="badges">
-  <img src="img/soren.jpg" alt="Soren badge">
-  <img src="img/klaudia.jpg" alt="Klaudia badge">
-  <img src="img/monika.jpg" alt="Monika badge">
-  </div>
-  <div id = "team-info-text">
-  <h3>Our Goal</h3>
-<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-</div>
-</section>
 
-<footer>
-  <nav class="nav-fixed">
-     <div class="nav-content">
-       <ul class="tabs tabs-transparent">
-         <li class="tab"><a href="#home">Home</a></li>
-         <li class="tab"><a href="#view-all">View all</a></li>
-         <li class="tab"><a href="#volunteer">Volunteer</a></li>
-         <li class="tab"><a href="#about">About us</a></li>
-       </ul>
-     </div>
-     </nav>
-</footer>
+  <section id="page-home">
 
+    <div class="input-field col s12" id="searchForm">
+      <select id="input_type">
+        <option value="" disabled selected>Animal type</option>
+      </select>
+
+      <select id="input_breed">
+        <option value="" disabled selected>Breed</option>
+      </select>
+
+      <select id="input_gender">
+        <option value="" disabled selected>Gender</option>
+      </select>
+
+      <select id="input_age">
+        <option value="" disabled selected>Age</option>
+      </select>
+
+      <select id="input_size">
+        <option value="" disabled selected>Size</option>
+      </select>
+
+      <select id="input_location">
+        <option value="" disabled selected>Location</option>
+      </select>
+      <button type="button" name="button" onclick="searchList()">Search</button>
+    </div>
+
+  </section>
+
+  <section id="page-view-all">
+
+
+    <section id="pet-container">
+
+    </section>
+  </section>
+
+  <section id="team" class="team-info">
+    <div class="container">
+      <h2>Our Team</h2>
+      <div class="badges">
+        <img
+          src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/1610015_608740772535696_4424277398124117285_n.jpg?_nc_cat=107&_nc_oc=AQmwiEhhqnkb0dBvOeAL5-DVB2n-hp5mPKI8-u9-odngF7KKEZVigX4h4tbJObmFbWs&_nc_ht=scontent-amt2-1.xx&oh=d90070298da301970bae16d7a339b897&oe=5E0299CA"
+          alt="Soren badge">
+        <img
+          src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/13872868_1328578483837228_965809323247874633_n.jpg?_nc_cat=104&_nc_oc=AQm_VUIBx6I3fC6cME8jJt_ma1xB15CISrq-RC4CS6-H0SdtW5q_vtK-S_S5vzkrCts&_nc_ht=scontent-amt2-1.xx&oh=e98a9ec4df8b4efd44cd3aa302382cb0&oe=5DFE09B9"
+          alt="Klaudia badge">
+        <img
+          src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/30443151_1528857760574805_9199959968814575134_n.jpg?_nc_cat=100&_nc_oc=AQnQlf6EImI0tDcnDdu-gTVc3OO9QDswfrHbmaiSnVuFob2rrVKESw0fhvorfROebkE&_nc_ht=scontent-amt2-1.xx&oh=c5f82c46cd2944539e586111ebc922e8&oe=5E012889"
+          alt="Monika badge">
+      </div>
+      <div id="team-info-text">
+        <h3>Our Goal</h3>
+        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+          aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <nav class="nav-fixed">
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="#home">Home</a></li>
+          <li class="tab"><a href="#view-all">View all</a></li>
+          <li class="tab"><a href="#volunteer">Volunteer</a></li>
+          <li class="tab"><a href="#about">About us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="js/main.js" charset="utf-8"></script>
 </body>
 

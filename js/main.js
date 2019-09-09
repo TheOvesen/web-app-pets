@@ -6,6 +6,11 @@ let sheetUrl = `https://spreadsheets.google.com/feeds/list/${sheetId}/${sheetNum
 let petList = [];
 // console.log(sheetUrl);
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems);
+});
+
 // Get the list of pets from our Google Sheet
 fetch(sheetUrl)
   .then(function(response) {
@@ -47,40 +52,6 @@ function appendPets(pets) {
   document.querySelector("#pet-container").innerHTML = htmlTemplate;
 }
 
-// Gets the different species from the list of pets and puts them in an array; no duplicates
-function getSpecies(pets) {
-  let htmlTemplate = "";
-  let speciesArray = [];
-
-  for (let pet of pets) {
-    if (speciesArray.includes(pet["gsx$type"]["$t"].toLowerCase()) === false) {
-      speciesArray.push(pet["gsx$type"]["$t"].toLowerCase())
-      htmlTemplate += `
-        <option value="${pet["gsx$type"]["$t"].toLowerCase()}">${pet["gsx$type"]["$t"]}</option>
-      `;
-    }
-  }
-
-  document.querySelector("#input_species").innerHTML += htmlTemplate;
-}
-
-// Gets the available locations from the list and puts them in an array; no duplicates
-function getLocations(pets) {
-  let htmlTemplate = "";
-  let locationArray = [];
-
-  for (let pet of pets) {
-    if (locationArray.includes(pet["gsx$location"]["$t"].toLowerCase()) === false) {
-      locationArray.push(pet["gsx$location"]["$t"].toLowerCase())
-      htmlTemplate += `
-        <option value="${pet["gsx$location"]["$t"].toLowerCase()}">${pet["gsx$location"]["$t"]}</option>
-      `;
-    }
-  }
-
-  document.querySelector("#input_location").innerHTML += htmlTemplate;
-}
-
 function fillDropdown(category)
 {
   let htmlTemplate = `<option value="">---</option>`;
@@ -95,7 +66,11 @@ function fillDropdown(category)
     }
   }
 
+  console.log(containerArray);
   document.querySelector(`#input_${category}`).innerHTML += htmlTemplate;
+
+  let elems = document.querySelectorAll('select');
+  let instances = M.FormSelect.init(elems);
 }
 
 function searchList()
