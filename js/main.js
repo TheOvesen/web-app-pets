@@ -41,8 +41,8 @@ function appendPets(pets) {
   // Basic DOM insertion to check if it works
   for (let pet of pets) {
     htmlTemplate += `
-      <article>
-        <img src="${pet["gsx$photo"]["$t"]}">
+      <article class="list_element">
+        <div class="img_container"><img src="${pet["gsx$photo"]["$t"]}"></div>
         <h2>${pet["gsx$name"]["$t"]}</h2>
         <p>Age: ${pet["gsx$age"]["$t"]}</p>
         <p>Location: ${pet["gsx$location"]["$t"]}
