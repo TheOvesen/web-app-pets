@@ -25,8 +25,7 @@ fetch(sheetUrl)
     fillSearchForm(petList);
   });
 
-function fillSearchForm(list)
-{
+function fillSearchForm(list) {
   fillDropdown("type");
   fillDropdown("age");
   fillDropdown("breed");
@@ -54,8 +53,7 @@ function appendPets(pets) {
   document.querySelector("#pet-container").innerHTML = htmlTemplate;
 }
 
-function fillDropdown(category)
-{
+function fillDropdown(category) {
   let htmlTemplate = `<option value="">---</option>`;
   let containerArray = [];
 
@@ -75,8 +73,7 @@ function fillDropdown(category)
   let instances = M.FormSelect.init(elems);
 }
 
-function searchList()
-{
+function searchList() {
   let propertyArray = [
     "gsx$type",
     "gsx$age",
