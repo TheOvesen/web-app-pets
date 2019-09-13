@@ -20,6 +20,11 @@
   opacity: 0.8;
 }
 
+.spacer
+{
+  height: 20px;
+}
+
 .team-info h2, .team-info  h3, .team-info p {
   margin: 8%;
   text-align: center;
@@ -56,6 +61,7 @@ img {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: center;
+  margin-top: 20px;
 }
 
 .list_element {

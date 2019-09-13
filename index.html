@@ -29,32 +29,34 @@
 
   <section id="home">
 
+    <section class="row">
     <div class="input-field col s12" id="searchForm">
-      <select id="input_type">
+      <select class="input_type">
         <option value="" disabled selected>Animal type</option>
       </select>
 
-      <select id="input_breed">
+      <select class="input_breed">
         <option value="" disabled selected>Breed</option>
       </select>
 
-      <select id="input_gender">
+      <select class="input_gender">
         <option value="" disabled selected>Gender</option>
       </select>
 
-      <select id="input_age">
+      <select class="input_age">
         <option value="" disabled selected>Age</option>
       </select>
 
-      <select id="input_size">
+      <select class="input_size">
         <option value="" disabled selected>Size</option>
       </select>
 
-      <select id="input_location">
+      <select class="input_location">
         <option value="" disabled selected>Location</option>
       </select>
-      <button class="waves-effect waves-light btn" type="button" name="button" onclick="searchList()">Search</button>
+      <button class="waves-effect waves-light btn col s6 offset-s3" type="button" name="button" onclick="searchList('searchForm')">Search</button>
     </div>
+    </section>
 
   </section>
 
@@ -143,10 +145,40 @@
   </section>
   <!-- end of form -->
 
-  <section id="view-all">
+  <section class="row" id="view-all">
 
+    <div class="spacer"></div>
+    <a class="waves-effect waves-light btn col s6 offset-s3" onclick="showSearch()" id="show-search">New search</a>
+    <a class="waves-effect waves-light btn hide col s6 offset-s3" onclick="hideSearch()" id="hide-search">Hide search</a>
 
-    <section id="pet-container">
+    <section class="input-field col s12 hide" id="new-search">
+      <select class="input_type">
+        <option value="" disabled selected>Animal type</option>
+      </select>
+
+      <select class="input_breed">
+        <option value="" disabled selected>Breed</option>
+      </select>
+
+      <select class="input_gender">
+        <option value="" disabled selected>Gender</option>
+      </select>
+
+      <select class="input_age">
+        <option value="" disabled selected>Age</option>
+      </select>
+
+      <select class="input_size">
+        <option value="" disabled selected>Size</option>
+      </select>
+
+      <select class="input_location">
+        <option value="" disabled selected>Location</option>
+      </select>
+      <button class="waves-effect waves-light btn col s6 offset-s3" type="button" name="button" onclick="searchList('new-search')">Search</button>
+    </section>
+
+    <section class="col" id="pet-container">
 
     </section>
   </section>
