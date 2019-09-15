@@ -2,8 +2,23 @@
   margin: 0;
 }
 
+.landing img{
+    widtth:100%;
+}
+
+.brand-logo img{
+  float:left;
+  width: 50%;
+  margin-left: 25%;
+}
 .nav-fixed, .nav-extended {
   background-color: #9a3e42;
+  margin-bottom: 8.5vh;
+}
+
+.slides li img{
+  width:100%;
+  padding-bottom: 10%;
 }
 
 .btn
