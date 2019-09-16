@@ -17,8 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
   let instances = M.Sidenav.init(elems);
   let tabs = document.querySelectorAll('.tabs');
   let instance = M.Tabs.init(tabs);
- let slides = document.querySelectorAll('.slider');
+  let slides = document.querySelectorAll('.slider');
   let images = M.Slider.init(slides);
+  let modals = document.querySelectorAll('.modal');
+  let modalinstances = M.Modal.init(modals);
+  let carousels = document.querySelectorAll('.carousel');
+  let carouselinstances = M.Carousel.init(carousels);
 });
 
 // Get the list of pets from our Google Sheet
@@ -66,6 +70,11 @@ function fillDropdown(category) {
   let containerArray = [];
 
   for (let pet of petList) {
+    if (pet[`gsx$${category}`]["$t"].includes("---"))
+    {
+      continue;
+    }
+
     if (containerArray.includes(pet[`gsx$${category}`]["$t"]) === false) {
       containerArray.push(pet[`gsx$${category}`]["$t"])
       htmlTemplate += `
@@ -155,3 +164,10 @@ function hideSearch()
   hideButton.classList.add("hide");
   search.classList.add("hide");
 }
+
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: "thumbnails"
+  });
+});

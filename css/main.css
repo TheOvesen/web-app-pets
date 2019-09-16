@@ -2,25 +2,42 @@
   margin: 0;
 }
 
-.landing img{
-    widtth:100%;
+header{
+  margin-bottom: 10%;
 }
 
-.brand-logo img{
-  float:left;
+#landing img {
+  width: 100%;
+}
+
+.brand-logo img {
+  float: left;
   width: 50%;
   margin-left: 25%;
 }
+
 .nav-fixed, .nav-extended {
   background-color: #9a3e42;
-  margin-bottom: 8.5vh;
 }
 
 .slides li img{
   width:100%;
-  padding-bottom: 10%;
+}
+.slider .slides li{
+  height: auto;
 }
 
+.slider .slides p{
+  padding: 3%;
+  padding-top: 7%;
+}
+
+.row{
+  height: auto;
+  padding-top: 50%;
+  color: #9a3e42;
+  text-align: center;
+}
 .btn
 {
   color: white;
@@ -28,19 +45,17 @@
   opacity: 0.8;
 }
 
-.btn:hover
-{
+.btn:hover {
   color: #9a3e42;
   background-color: lightgrey;
   opacity: 0.8;
 }
 
-.spacer
-{
+.spacer {
   height: 20px;
 }
 
-.team-info h2, .team-info  h3, .team-info p {
+.team-info h2, .team-info h3, .team-info p {
   margin: 8%;
   text-align: center;
 }
@@ -63,8 +78,7 @@ img {
   width: 100%;
 }
 
-.img_container
-{
+.img_container {
   width: 100%;
   height: 12vh;
   overflow: hidden;
@@ -87,14 +101,12 @@ img {
   text-align: center;
 }
 
-.list_element h2
-{
+.list_element h2 {
   color: black;
   font-size: 5vw;
   margin: 2vh 0 2vh 0;
 }
 
-.list_element p
-{
+.list_element p {
   margin: 0;
 }
