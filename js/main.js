@@ -6,11 +6,19 @@ let sheetUrl = `https://spreadsheets.google.com/feeds/list/${sheetId}/${sheetNum
 let petList = [];
 // console.log(sheetUrl);
 
+//jQuesry anumation for landing page
+setTimeout(function() {
+   $( "#landing" ).slideUp( 4000 ).delay( 3000 );
+
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.sidenav');
   let instances = M.Sidenav.init(elems);
   let tabs = document.querySelectorAll('.tabs');
   let instance = M.Tabs.init(tabs);
+ let slides = document.querySelectorAll('.slider');
+  let images = M.Slider.init(slides);
 });
 
 // Get the list of pets from our Google Sheet
