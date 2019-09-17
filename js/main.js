@@ -6,11 +6,23 @@ let sheetUrl = `https://spreadsheets.google.com/feeds/list/${sheetId}/${sheetNum
 let petList = [];
 // console.log(sheetUrl);
 
+//jQuesry anumation for landing page
+setTimeout(function() {
+   $( "#landing" ).slideUp( 4000 ).delay( 3000 );
+
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.sidenav');
   let instances = M.Sidenav.init(elems);
   let tabs = document.querySelectorAll('.tabs');
   let instance = M.Tabs.init(tabs);
+  let slides = document.querySelectorAll('.slider');
+  let images = M.Slider.init(slides);
+  let modals = document.querySelectorAll('.modal');
+  let modalinstances = M.Modal.init(modals);
+  let carousels = document.querySelectorAll('.carousel');
+  let carouselinstances = M.Carousel.init(carousels);
 });
 
 // Get the list of pets from our Google Sheet
@@ -45,7 +57,8 @@ function appendPets(pets) {
         <div class="img_container"><img src="${pet["gsx$photo"]["$t"]}"></div>
         <h2>${pet["gsx$name"]["$t"]}</h2>
         <p>Age: ${pet["gsx$age"]["$t"]}</p>
-        <p>Location: ${pet["gsx$location"]["$t"]}
+        <p>Location: ${pet["gsx$location"]["$t"]}</p>
+        <button class="waves-effect waves-light btn" type="button" name="button" onclick="showPet('${pet["id"]["$t"]}')">Meet me!</button>
       </article>
     `;
   }
@@ -53,11 +66,33 @@ function appendPets(pets) {
   document.querySelector("#pet-container").innerHTML = htmlTemplate;
 }
 
+function showPet(petID)
+{
+  let selectedPet = {};
+  let htmlTemplate = "";
+
+  for (let pet of petList)
+  {
+    if (pet["id"]["$t"].includes(petID))
+    {
+      selectedPet = pet;
+      break;
+    }
+  }
+
+  console.log(selectedPet);
+}
+
 function fillDropdown(category) {
   let htmlTemplate = `<option value="">---</option>`;
   let containerArray = [];
 
   for (let pet of petList) {
+    if (pet[`gsx$${category}`]["$t"].includes("---"))
+    {
+      continue;
+    }
+
     if (containerArray.includes(pet[`gsx$${category}`]["$t"]) === false) {
       containerArray.push(pet[`gsx$${category}`]["$t"])
       htmlTemplate += `
@@ -67,13 +102,17 @@ function fillDropdown(category) {
   }
 
   console.log(containerArray);
-  document.querySelector(`#input_${category}`).innerHTML += htmlTemplate;
+  let dropdowns = document.querySelectorAll(`.input_${category}`);
+  for (let dropdown of dropdowns)
+  {
+    dropdown.innerHTML += htmlTemplate;
+  }
 
   let elems = document.querySelectorAll('select');
   let instances = M.FormSelect.init(elems);
 }
 
-function searchList() {
+function searchList(formID) {
   let propertyArray = [
     "gsx$type",
     "gsx$age",
@@ -84,16 +123,17 @@ function searchList() {
   ];
 
   let searchPromptArray = [
-    document.querySelector("#input_type").value,
-    document.querySelector("#input_age").value,
-    document.querySelector("#input_breed").value,
-    document.querySelector("#input_location").value,
-    document.querySelector("#input_gender").value,
-    document.querySelector("#input_size").value
+    document.querySelector(`#${formID} .input_type`).value,
+    document.querySelector(`#${formID} .input_age`).value,
+    document.querySelector(`#${formID} .input_breed`).value,
+    document.querySelector(`#${formID} .input_location`).value,
+    document.querySelector(`#${formID} .input_gender`).value,
+    document.querySelector(`#${formID} .input_size`).value
   ];
 
   appendPets(searchListSpecificMulti(petList, propertyArray, searchPromptArray));
 
+  hideSearch();
   document.querySelector("#view_all_button").click();
 }
 
@@ -122,3 +162,30 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
   console.log(filteredList);
   return filteredList;
 }
+
+function showSearch()
+{
+  let showButton = document.querySelector("#show-search");
+  let hideButton = document.querySelector("#hide-search");
+  let search = document.querySelector("#new-search");
+  showButton.classList.add("hide");
+  hideButton.classList.remove("hide");
+  search.classList.remove("hide");
+}
+
+function hideSearch()
+{
+  let showButton = document.querySelector("#show-search");
+  let hideButton = document.querySelector("#hide-search");
+  let search = document.querySelector("#new-search");
+  showButton.classList.remove("hide");
+  hideButton.classList.add("hide");
+  search.classList.add("hide");
+}
+
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: "thumbnails"
+  });
+});
