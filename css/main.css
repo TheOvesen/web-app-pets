@@ -20,17 +20,25 @@ header{
   background-color: #9a3e42;
 }
 
-.slides li img{
-  width:100%;
+.slider .slides {
+  height: 300px !important;
 }
-.slider .slides li{
+.slider {
+  height: 340px !important;
+}
+/* .slider .slides li{
   height: auto;
+} */
+
+.slider .slides img{
+  width: 100%;
 }
 
 .slider .slides p{
-  padding: 3%;
+  padding: 4%;
   padding-top: 7%;
 }
+
 
 .row{
   height: auto;
@@ -110,3 +118,10 @@ img {
 .list_element p {
   margin: 0;
 }
+
+#quote {
+background: linear-gradient(to right top, #9a3e42, #c16142, #de8b3e, #eeba3f, #eded51);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
