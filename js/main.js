@@ -57,12 +57,30 @@ function appendPets(pets) {
         <div class="img_container"><img src="${pet["gsx$photo"]["$t"]}"></div>
         <h2>${pet["gsx$name"]["$t"]}</h2>
         <p>Age: ${pet["gsx$age"]["$t"]}</p>
-        <p>Location: ${pet["gsx$location"]["$t"]}
+        <p>Location: ${pet["gsx$location"]["$t"]}</p>
+        <button class="waves-effect waves-light btn" type="button" name="button" onclick="showPet('${pet["id"]["$t"]}')">Meet me!</button>
       </article>
     `;
   }
 
   document.querySelector("#pet-container").innerHTML = htmlTemplate;
+}
+
+function showPet(petID)
+{
+  let selectedPet = {};
+  let htmlTemplate = "";
+
+  for (let pet of petList)
+  {
+    if (pet["id"]["$t"].includes(petID))
+    {
+      selectedPet = pet;
+      break;
+    }
+  }
+
+  console.log(selectedPet);
 }
 
 function fillDropdown(category) {
