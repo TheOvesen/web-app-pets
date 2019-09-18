@@ -25,6 +25,61 @@ document.addEventListener('DOMContentLoaded', function() {
   let carouselinstances = M.Carousel.init(carousels);
 });
 
+// google map
+
+let map;
+let map1;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10
+  });
+
+  // set position by device geolocation
+  navigator.geolocation.getCurrentPosition(function(position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    map.setCenter(pos);
+  });
+  map1 = new google.maps.Map(document.getElementById('map1'), {
+    zoom: 10
+  });
+
+  // set position by device geolocation
+  navigator.geolocation.getCurrentPosition(function(position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    map1.setCenter(pos);
+  });
+}
+
+let searchLat = 0;
+let searchLng = 0;
+
+// markers
+function appendMarkers(places, mapId) {
+  for (let place of places) {
+    console.log(place);
+    let latLng = new google.maps.LatLng(place["gsx$lat"]["$t"], place["gsx$lng"]["$t"]);
+    let marker = new google.maps.Marker({
+      position: latLng,
+      map: mapId
+    });
+    marker.addListener('click', function() {
+    //map.setZoom(12);
+    //map.setCenter(marker.getPosition());
+    searchLat = marker.getPosition().lat();
+    searchLng = marker.getPosition().lng();
+    console.log(searchLat);
+    console.log(searchLng);
+    //console.log(marker.position);
+  });
+  }
+}
 // Get the list of pets from our Google Sheet
 fetch(sheetUrl)
   .then(function(response) {
@@ -35,13 +90,16 @@ fetch(sheetUrl)
     console.log(petList);
     appendPets(petList);
     fillSearchForm(petList);
+    initMap();
+      appendMarkers(petList, map);
+        appendMarkers(petList, map1);
   });
 
 function fillSearchForm(list) {
   fillDropdown("type");
   fillDropdown("age");
   fillDropdown("breed");
-  fillDropdown("location");
+  //fillDropdown("location");
   fillDropdown("size");
   fillDropdown("gender");
 }
@@ -117,18 +175,20 @@ function searchList(formID) {
     "gsx$type",
     "gsx$age",
     "gsx$breed",
-    "gsx$location",
     "gsx$gender",
-    "gsx$size"
+    "gsx$size",
+    "gsx$lat",
+    "gsx$lng"
   ];
 
   let searchPromptArray = [
     document.querySelector(`#${formID} .input_type`).value,
     document.querySelector(`#${formID} .input_age`).value,
     document.querySelector(`#${formID} .input_breed`).value,
-    document.querySelector(`#${formID} .input_location`).value,
     document.querySelector(`#${formID} .input_gender`).value,
-    document.querySelector(`#${formID} .input_size`).value
+    document.querySelector(`#${formID} .input_size`).value,
+    searchLat,
+    searchLng
   ];
 
   appendPets(searchListSpecificMulti(petList, propertyArray, searchPromptArray));
@@ -148,7 +208,18 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
     let matches = 0;
 
     for (let i = 0; i < propertyArray.length; i++) {
-      if (object[`${propertyArray[i]}`]["$t"].includes(searchPromptArray[i].trim())) {
+      let property = object[`${propertyArray[i]}`]["$t"];
+      let searchPrompt = searchPromptArray[i];
+      if (Number.isNaN(searchPrompt) === false)
+      {
+        searchPrompt = searchPrompt.toString();
+      }
+
+      if (Number.isNaN(property) === false)
+      {
+        property = property.toString();
+      }
+      if (property.includes(searchPrompt.trim())) {
         matches++;
       }
     }

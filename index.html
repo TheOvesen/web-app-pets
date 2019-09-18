@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  
+
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
@@ -94,15 +94,22 @@
           <option value="" disabled selected>Size</option>
         </select>
 
-        <select class="input_location">
+        <!-- <select class="input_location">
           <option value="" disabled selected>Location</option>
-        </select>
+        </select> -->
+
+        <!-- map section -->
+        <section id="map"></section>
+
+        <!--  -->
+
+
+
         <button class="waves-effect waves-light btn col s6 offset-s3" type="button" name="button" onclick="searchList('searchForm')">Search</button>
       </div>
     </section>
 
   </section>
-
   <!-- / form section-->
 
 <section class="container-form">
@@ -172,8 +179,8 @@
         </div>
     </form>
   </section>
-      
-          
+
+
   <!-- end of form -->
 
   <section class="row" id="view-all">
@@ -203,9 +210,12 @@
         <option value="" disabled selected>Size</option>
       </select>
 
-      <select class="input_location">
+      <!-- <select class="input_location">
         <option value="" disabled selected>Location</option>
-      </select>
+      </select> -->
+<!-- map -->
+<section id="map1"></section>
+
       <button class="waves-effect waves-light btn col s6 offset-s3" type="button" name="button" onclick="searchList('new-search')">Search</button>
     </section>
 
@@ -253,7 +263,11 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<!-- google -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5WQOliXXHF9M0UeRIStiJal6pwDoCQ6s&callback=initMap"></script>
   <script src="js/main.js" charset="utf-8"></script>
+
+
 
 </body>
 

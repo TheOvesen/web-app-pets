@@ -110,3 +110,6 @@ img {
 .list_element p {
   margin: 0;
 }
+#map, #map1 {
+  height: 200px;
+}
