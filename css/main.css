@@ -157,7 +157,8 @@ img {
   margin: 0;
 }
 #map, #map1 {
-  height: 200px;
+  height: 400px;
+  margin-bottom: 15px;
 }
 
 #quote {
@@ -182,4 +183,11 @@ background: linear-gradient(to right top, #9a3e42, #c16142, #de8b3e, #eeba3f, #e
   height: auto;
   margin-bottom: 5px;
   cursor: pointer;
+}
+.apply{
+  margin-top: 25px;
+}
+
+.container-form{
+  margin:15px;
 }
