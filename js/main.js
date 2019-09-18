@@ -6,12 +6,13 @@ let sheetNumber = 1;
 let sheetUrl = `https://spreadsheets.google.com/feeds/list/${sheetId}/${sheetNumber}/public/full?alt=json`;
 let petList = [];
 
+// KLAUDIA
 //jQuery anumation for landing page
 setTimeout(function() {
   $("#landing").slideUp(4000).delay(6000);
 });
 
-
+// KLAUDIA
 // Carousel slider on home page
 $('.carousel.carousel-slider').carousel({
     fullWidth: true,
@@ -30,6 +31,7 @@ $('.carousel.carousel-slider').carousel({
  // });
 
 
+// Copied from Materialize documentation
 // Initialize our various Materialize components
 document.addEventListener('DOMContentLoaded', function() {
   let elems = document.querySelectorAll('.sidenav');
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let modalinstances = M.Modal.init(modals);
 });
 
+// MONIKA
 // google map
 
 let map;
@@ -77,6 +80,7 @@ function initMap() {
 let searchLat = 0;
 let searchLng = 0;
 
+// MONIKA
 // markers
 function appendMarkers(places, mapId) {
   for (let place of places) {
@@ -96,6 +100,8 @@ function appendMarkers(places, mapId) {
     });
   }
 }
+
+// SØREN; largely taken from our Google Sheets exercises
 // Get the list of pets from our Google Sheet
 fetch(sheetUrl)
   .then(function(response) {
@@ -111,6 +117,7 @@ fetch(sheetUrl)
     appendMarkers(petList, map1);
   });
 
+// SØREN
 // Just a shorthand to more quickly fill the dropdowns
 function fillSearchForm(list) {
   fillDropdown("type");
@@ -121,6 +128,7 @@ function fillSearchForm(list) {
   fillDropdown("gender");
 }
 
+// SØREN
 // Appends the list of pets to the DOM
 function appendPets(pets) {
   let htmlTemplate = "";
@@ -141,6 +149,7 @@ function appendPets(pets) {
   document.querySelector("#pet-container").innerHTML = htmlTemplate;
 }
 
+// SØREN
 // Puts the details of the selected pet into the modal
 function showPet(petID) {
   let selectedPet = {};
@@ -182,11 +191,13 @@ function showPet(petID) {
   document.querySelector("#pet-modal-content").innerHTML = htmlTemplate;
 }
 
+// SØREN
 // Swaps the big photo of the modal with the one on the clicked thumbnail
 function swapModalPhoto(photo) {
   document.querySelector("#pet-modal-big-image").src = photo;
 }
 
+// SØREN
 // Fills a dropdown menu with the specified category
 function fillDropdown(category) {
   let htmlTemplate = `<option value="">---</option>`;
@@ -220,6 +231,7 @@ function fillDropdown(category) {
   let instances = M.FormSelect.init(elems);
 }
 
+// SØREN
 // Search the list for pets that match the given criteria
 function searchList(formID) {
   // These are the properties we need to compare in the search
@@ -253,6 +265,7 @@ function searchList(formID) {
   document.querySelector("#view_all_button").click();
 }
 
+// SØREN
 // Searches through a given list of objects for objects that match all given properties with all given search prompts
 function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
   // If the two arrays aren't equally long, it won't work, so throw an error instead and return an empty array
@@ -270,9 +283,6 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
     for (let i = 0; i < propertyArray.length; i++) {
       let property = object[`${propertyArray[i]}`]["$t"];
       let searchPrompt = searchPromptArray[i];
-
-      console.log(property);
-      console.log(searchPrompt);
 
       if (Number.isNaN(searchPrompt) === false) {
         searchPrompt = searchPrompt.toString().slice(0, 6);
@@ -297,6 +307,7 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
   return filteredList; // Return the filtered list
 }
 
+// SØREN
 // Shows the search form and "hide search" button on the "View all" page, hides "New search" button
 function showSearch() {
   let showButton = document.querySelector("#show-search");
@@ -307,6 +318,7 @@ function showSearch() {
   search.classList.remove("hide");
 }
 
+// SØREN
 // Hides the search form and "hide search" button on the "View all" page, shows "New search" button
 function hideSearch() {
   let showButton = document.querySelector("#show-search");
