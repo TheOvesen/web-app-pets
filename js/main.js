@@ -6,11 +6,29 @@ let sheetNumber = 1;
 let sheetUrl = `https://spreadsheets.google.com/feeds/list/${sheetId}/${sheetNumber}/public/full?alt=json`;
 let petList = [];
 
-//jQuesry anumation for landing page
+//jQuery anumation for landing page
 setTimeout(function() {
-  $("#landing").slideUp(4000).delay(3000);
-
+  $("#landing").slideUp(4000).delay(6000);
 });
+
+
+// Carousel slider on home page
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true,
+  });
+
+// setInterval(function(){
+//     $('.carousel.carousel-slider').next();
+//   }, 1000);
+
+ // $(window).load(function() {
+ //   $('.flexslider').flexslider({
+ //     animation: "slide",
+ //     controlNav: "thumbnails"
+ //   });
+ // });
+
 
 // Initialize our various Materialize components
 document.addEventListener('DOMContentLoaded', function() {
@@ -18,12 +36,66 @@ document.addEventListener('DOMContentLoaded', function() {
   let instances = M.Sidenav.init(elems);
   let tabs = document.querySelectorAll('.tabs');
   let instance = M.Tabs.init(tabs);
-  let slides = document.querySelectorAll('.slider');
-  let images = M.Slider.init(slides);
+//   let slides = document.querySelectorAll('.slider');
+//   let images = M.Slider.init(slides);
   let modals = document.querySelectorAll('.modal');
   let modalinstances = M.Modal.init(modals);
 });
 
+// google map
+
+let map;
+let map1;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10
+  });
+
+  // set position by device geolocation
+  navigator.geolocation.getCurrentPosition(function(position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    map.setCenter(pos);
+  });
+  map1 = new google.maps.Map(document.getElementById('map1'), {
+    zoom: 10
+  });
+
+  // set position by device geolocation
+  navigator.geolocation.getCurrentPosition(function(position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    map1.setCenter(pos);
+  });
+}
+
+let searchLat = 0;
+let searchLng = 0;
+
+// markers
+function appendMarkers(places, mapId) {
+  for (let place of places) {
+    let latLng = new google.maps.LatLng(place["gsx$lat"]["$t"], place["gsx$lng"]["$t"]);
+    let marker = new google.maps.Marker({
+      position: latLng,
+      map: mapId
+    });
+    marker.addListener('click', function() {
+      //map.setZoom(12);
+      //map.setCenter(marker.getPosition());
+      searchLat = marker.getPosition().lat();
+      searchLng = marker.getPosition().lng();
+      console.log(searchLat);
+      console.log(searchLng);
+      //console.log(marker.position);
+    });
+  }
+}
 // Get the list of pets from our Google Sheet
 fetch(sheetUrl)
   .then(function(response) {
@@ -31,9 +103,12 @@ fetch(sheetUrl)
   })
   .then(function(json) {
     petList = json.feed.entry;
-    console.log(petList);     // For debugging
-    appendPets(petList);      // Add all pets to the list
-    fillSearchForm(petList);  // Fill the search form dropdowns
+    console.log(petList);
+    appendPets(petList);
+    fillSearchForm(petList);
+    initMap();
+    appendMarkers(petList, map);
+    appendMarkers(petList, map1);
   });
 
 // Just a shorthand to more quickly fill the dropdowns
@@ -41,7 +116,7 @@ function fillSearchForm(list) {
   fillDropdown("type");
   fillDropdown("age");
   fillDropdown("breed");
-  fillDropdown("location");
+  //fillDropdown("location");
   fillDropdown("size");
   fillDropdown("gender");
 }
@@ -152,9 +227,10 @@ function searchList(formID) {
     "gsx$type",
     "gsx$age",
     "gsx$breed",
-    "gsx$location",
     "gsx$gender",
-    "gsx$size"
+    "gsx$size",
+    "gsx$lat",
+    "gsx$lng"
   ];
 
   // These are all the values of the searches we need to compare the properties to
@@ -162,9 +238,10 @@ function searchList(formID) {
     document.querySelector(`#${formID} .input_type`).value,
     document.querySelector(`#${formID} .input_age`).value,
     document.querySelector(`#${formID} .input_breed`).value,
-    document.querySelector(`#${formID} .input_location`).value,
     document.querySelector(`#${formID} .input_gender`).value,
-    document.querySelector(`#${formID} .input_size`).value
+    document.querySelector(`#${formID} .input_size`).value,
+    searchLat,
+    searchLng
   ];
 
   // Calls the actual search function, which returns an array of pet objects
@@ -191,10 +268,23 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
 
     // For all properties in the array, compare to the search prompt at the same index
     for (let i = 0; i < propertyArray.length; i++) {
-      if (object[`${propertyArray[i]}`]["$t"].includes(searchPromptArray[i].trim())) {
-        matches++; // If they match, increment number of matches
+      let property = object[`${propertyArray[i]}`]["$t"];
+      let searchPrompt = searchPromptArray[i];
+
+      console.log(property);
+      console.log(searchPrompt);
+
+      if (Number.isNaN(searchPrompt) === false) {
+        searchPrompt = searchPrompt.toString().slice(0, 6);
+      }
+
+      if (property.includes(searchPrompt.trim())) {
+        matches++;
       }
     }
+
+    searchLat = 0;
+    searchLng = 0;
 
     // If every property matched, push the object to the filtered list
     if (matches === propertyArray.length) {
@@ -226,10 +316,3 @@ function hideSearch() {
   hideButton.classList.add("hide");
   search.classList.add("hide");
 }
-
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
