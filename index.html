@@ -27,10 +27,11 @@
   <section id="nav-bar">
     <nav class="nav-extended">
       <div class="nav-wrapper">
-        <a href="#home" class="brand-logo"><img src="images/logo.png" alt="Logo"/></a>
+        <div class="brand-logo">
+        <a href="#home"><img src="images/logo.png"  alt="Logo"></a>
+      </div>
       </div>
     </nav>
-
   </section>
 </header>
 
@@ -73,7 +74,7 @@
 <!--  Search field-->
     <section class="row">
     <div class="input-field col s12" id="searchForm">
-          <h3>Search form</h3>
+          <h2>Search form</h2>
       <select class="input_type">
         <option value="" disabled selected>Animal type</option>
       </select>
@@ -112,7 +113,8 @@
   </section>
   <!-- / form section-->
 
-<section class="container-form">
+<section class="container-form" id="volunteer">
+    <h1> Volunteer Form</h1>
     <p class="text-center">Personal information</p>
     <form action="/action_page.php">
       <div class="form-group ">
@@ -184,7 +186,7 @@
   <!-- end of form -->
 
   <section class="row" id="view-all">
-
+<h1>View All </h1>
     <div class="spacer"></div>
     <button class="waves-effect waves-light btn col s6 offset-s3" onclick="showSearch()" id="show-search">New search</button>
     <button class="waves-effect waves-light btn hide col s6 offset-s3" onclick="hideSearch()" id="hide-search">Hide search</button>
@@ -224,10 +226,19 @@
     </section>
   </section>
 
+  <div id="pet-modal" class="modal">
+    <div class="modal-content" id="pet-modal-content">
+      
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+
   <!-- Contact form -->
   <section id="about" class="team-info">
     <div class="container">
-      <h2>Our Team</h2>
+      <h1>Our Team</h1>
       <div class="badges">
         <img
           src="https://scontent-amt2-1.xx.fbcdn.net/v/t1.0-9/1610015_608740772535696_4424277398124117285_n.jpg?_nc_cat=107&_nc_oc=AQmwiEhhqnkb0dBvOeAL5-DVB2n-hp5mPKI8-u9-odngF7KKEZVigX4h4tbJObmFbWs&_nc_ht=scontent-amt2-1.xx&oh=d90070298da301970bae16d7a339b897&oe=5E0299CA"
@@ -240,10 +251,15 @@
           alt="Monika badge">
       </div>
       <div id="team-info-text">
-        <h3>Our Goal</h3>
-        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-          aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
+        <h2>Our Goal</h2>
+        <p>We are just a spec of dust in the galaxy, but there goes a saying:
+          <hr>
+          <div id="quote" class="quote-background">
+                    <h5> "Talking about kindness motivates us to be kind. But there are times when the best thing isn’t to talk at all but just to get on out there and be kind!" <h6><i>David R. Hamilton PhD </i></h6></h5>
+           </div>
+           <hr>
+          and our team tries to help all these animal voices reach the people. Our motto is "Adopt. Don't buy." and our goal is quite simple as well - give everyone interested in adopting the power to do it easily and from home. And our reward is the picture of a happy animal with his new family. Don't be static, be dynamic!
+       </p>
     </div>
   </section>
 
@@ -260,7 +276,8 @@
     </nav>
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <!-- google -->
