@@ -62,21 +62,20 @@ let searchLng = 0;
 // markers
 function appendMarkers(places, mapId) {
   for (let place of places) {
-    console.log(place);
     let latLng = new google.maps.LatLng(place["gsx$lat"]["$t"], place["gsx$lng"]["$t"]);
     let marker = new google.maps.Marker({
       position: latLng,
       map: mapId
     });
     marker.addListener('click', function() {
-    //map.setZoom(12);
-    //map.setCenter(marker.getPosition());
-    searchLat = marker.getPosition().lat();
-    searchLng = marker.getPosition().lng();
-    console.log(searchLat);
-    console.log(searchLng);
-    //console.log(marker.position);
-  });
+      //map.setZoom(12);
+      //map.setCenter(marker.getPosition());
+      searchLat = marker.getPosition().lat();
+      searchLng = marker.getPosition().lng();
+      console.log(searchLat);
+      console.log(searchLng);
+      //console.log(marker.position);
+    });
   }
 }
 // Get the list of pets from our Google Sheet
@@ -90,8 +89,8 @@ fetch(sheetUrl)
     appendPets(petList);
     fillSearchForm(petList);
     initMap();
-      appendMarkers(petList, map);
-        appendMarkers(petList, map1);
+    appendMarkers(petList, map);
+    appendMarkers(petList, map1);
   });
 
 // Just a shorthand to more quickly fill the dropdowns
@@ -253,19 +252,21 @@ function searchListSpecificMulti(list, propertyArray, searchPromptArray) {
     for (let i = 0; i < propertyArray.length; i++) {
       let property = object[`${propertyArray[i]}`]["$t"];
       let searchPrompt = searchPromptArray[i];
-      if (Number.isNaN(searchPrompt) === false)
-      {
-        searchPrompt = searchPrompt.toString();
+
+      console.log(property);
+      console.log(searchPrompt);
+
+      if (Number.isNaN(searchPrompt) === false) {
+        searchPrompt = searchPrompt.toString().slice(0, 6);
       }
 
-      if (Number.isNaN(property) === false)
-      {
-        property = property.toString();
-      }
       if (property.includes(searchPrompt.trim())) {
         matches++;
       }
     }
+
+    searchLat = 0;
+    searchLng = 0;
 
     // If every property matched, push the object to the filtered list
     if (matches === propertyArray.length) {
