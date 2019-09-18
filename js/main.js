@@ -6,9 +6,9 @@ let sheetNumber = 1;
 let sheetUrl = `https://spreadsheets.google.com/feeds/list/${sheetId}/${sheetNumber}/public/full?alt=json`;
 let petList = [];
 
-//jQuesry anumation for landing page
+//jQuery anumation for landing page
 setTimeout(function() {
-  $("#landing").slideUp(4000).delay(3000);
+  $("#landing").slideUp(4000).delay(6000);
 
 });
 
@@ -227,9 +227,9 @@ function hideSearch() {
   search.classList.add("hide");
 }
 
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlNav: "thumbnails"
-  });
-});
+// $(window).load(function() {
+//   $('.flexslider').flexslider({
+//     animation: "slide",
+//     controlNav: "thumbnails"
+//   });
+// });
