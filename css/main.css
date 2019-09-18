@@ -6,8 +6,24 @@ header{
   margin-bottom: 10%;
 }
 
-#landing img {
-  width: 100%;
+h1{
+  font-size: 32px;
+  text-align: center;
+  color: black;
+  font-variant: small-caps;
+}
+
+h2 {
+ font-variant: small-caps;
+ font-size: 27px;
+ text-align: center;
+ color: #9a3e42;
+
+}
+
+
+img {
+ width: 100%;
 }
 
 .brand-logo img {
@@ -42,10 +58,10 @@ header{
 
 .row{
   height: auto;
-  padding-top: 50%;
   color: #9a3e42;
   text-align: center;
 }
+
 .btn
 {
   color: white;
@@ -72,18 +88,6 @@ header{
   border-radius: 50%;
   width: 25%;
   margin-left: 5%;
-}
-
-.team-info h2 {
-  font-size: 35px;
-}
-
-.team-info h3 {
-  font-size: 27px;
-}
-
-img {
-  width: 100%;
 }
 
 .img_container {
