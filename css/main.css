@@ -64,9 +64,11 @@ img {
 /* .slider .slides {
   height: 300px !important;
 }
+
 .slider {
   height: 340px !important;
 }
+
 /* .slider .slides li{
   height: auto;
 } */
@@ -74,7 +76,7 @@ img {
   width: 100%;
 }
 
-.slider .slides p{
+.slider .slides p {
   padding: 4%;
   padding-top: 7%;
 } */
